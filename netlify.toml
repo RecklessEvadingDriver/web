@@ -1,6 +1,6 @@
 [build]
   # Install backend deps (used by Netlify Functions) then build the React frontend.
-  command   = "cd backend && npm install && cd ../frontend && npm install && npm run build"
+  command   = "npm install && cd backend && npm install && cd ../frontend && npm install && npm run build"
   publish   = "frontend/dist"
   functions = "netlify/functions"
 
