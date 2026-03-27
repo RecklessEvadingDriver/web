@@ -33,8 +33,13 @@ app.use((err, _req, res, _next) => {
   res.status(500).json({ error: err.message || 'Internal server error' });
 });
 
-app.listen(PORT, () => {
-  console.log(`HDHub4U API server running on port ${PORT}`);
-});
+// Only start the HTTP server when run directly (e.g. `node server.js`).
+// When imported by a serverless host (Netlify Functions), the app is
+// exported without binding to a port.
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`HDHub4U API server running on port ${PORT}`);
+  });
+}
 
 module.exports = app;
