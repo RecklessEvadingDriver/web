@@ -6,7 +6,6 @@
   "public": false,
   "functions": {
     "api/index.js": {
-      "runtime": "nodejs24.x",
       "memory": 1024,
       "maxDuration": 60,
       "includeFiles": "backend/**"
