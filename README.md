@@ -25,6 +25,34 @@ A full-stack streaming application built with Node.js/Express backend and React 
         └── utils/            # API client
 ```
 
+## Deploy to Vercel (Recommended)
+
+### One-click deploy
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/RecklessEvadingDriver/web)
+
+### Manual deploy via Vercel CLI
+```bash
+npm install -g vercel
+vercel --prod
+```
+
+### Manual deploy via Dashboard
+1. Go to [vercel.com](https://vercel.com) and sign in
+2. Click "Add New..." → "Project"
+3. Import your GitHub repository (`RecklessEvadingDriver/web`)
+4. Vercel auto-detects `vercel.json` and pre-fills settings
+5. (Optional) Set environment variables in Project Settings → Environment Variables
+6. Click "Deploy"
+
+The `vercel.json` config handles:
+- Frontend build with Vite
+- API routes served via `api/index.js`
+- SPA routing fallback for React Router
+- Automatic caching headers
+- Node.js 18.x runtime
+
+---
+
 ## Deploy to Netlify
 
 ### One-click deploy
@@ -48,6 +76,8 @@ A full-stack streaming application built with Node.js/Express backend and React 
 
 After deployment every `/api/*` request is handled by the `netlify/functions/api` serverless
 function, and all other routes serve the React SPA from `frontend/dist`.
+
+**Note**: The "File is not defined" error has been fixed with polyfills in both `api/index.js` (Vercel) and `netlify/functions/api.js` (Netlify) to ensure compatibility with the `undici` HTTP library in serverless environments.
 
 ### How it works on Netlify
 ```
