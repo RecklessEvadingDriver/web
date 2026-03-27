@@ -20,7 +20,7 @@ const CATEGORIES = [
   { slug: 'category/hollywood-movies/', name: 'Hollywood' },
   { slug: 'category/hindi-dubbed/', name: 'Hindi Dubbed' },
   { slug: 'category/south-hindi-movies/', name: 'South Hindi Dubbed' },
-  { slug: 'category/category/web-series/', name: 'Web Series' },
+  { slug: 'category/web-series/', name: 'Web Series' },
 ];
 
 async function fetchWithTimeout(url, options = {}) {
