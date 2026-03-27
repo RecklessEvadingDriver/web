@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    @apply bg-dark text-white font-sans antialiased;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-200;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-dark-300 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-600;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  }
+  .gradient-overlay {
+    background: linear-gradient(
+      to right,
+      rgba(13, 13, 15, 0.95) 0%,
+      rgba(13, 13, 15, 0.7) 50%,
+      transparent 100%
+    );
+  }
+  .gradient-bottom {
+    background: linear-gradient(
+      to top,
+      rgba(13, 13, 15, 1) 0%,
+      rgba(13, 13, 15, 0.5) 60%,
+      transparent 100%
+    );
+  }
+  .card-hover {
+    @apply transition-transform duration-300 ease-out;
+  }
+  .card-hover:hover {
+    @apply scale-105 z-10;
+  }
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}

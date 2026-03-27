@@ -1,0 +1,26 @@
+[build]
+  # Install backend deps (used by Netlify Functions) then build the React frontend.
+  command   = "cd backend && npm install && cd ../frontend && npm install && npm run build"
+  publish   = "frontend/dist"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# ---------------------------------------------------------------------------
+# API: forward every /api/* request to the serverless Express function.
+# "splat" preserves the full sub-path so Express routing works unchanged.
+# ---------------------------------------------------------------------------
+[[redirects]]
+  from   = "/api/*"
+  to     = "/.netlify/functions/api/:splat"
+  status = 200
+
+# ---------------------------------------------------------------------------
+# SPA catch-all: send all other requests to the React app's index.html so
+# that client-side routing (react-router-dom) works on page refresh.
+# ---------------------------------------------------------------------------
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
