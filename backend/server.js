@@ -10,6 +10,10 @@ const streamRoutes = require('./routes/stream');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Trust the X-Forwarded-For header set by Netlify (and other proxies) so that
+// express-rate-limit can read the real client IP via req.ip.
+app.set('trust proxy', 1);
+
 app.use(cors());
 app.use(express.json());
 
